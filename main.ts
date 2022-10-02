@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import * as fs from "fs";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -41,6 +42,19 @@ export function authorizeRteAndGetSignal() {
     .then(function (data) {
       // Log the pet data
       console.log("signal", data);
+
+      // stringify JSON Object
+      var jsonContent = JSON.stringify(data, null, 2);
+      console.log(jsonContent);
+
+      fs.writeFile("signal.json", jsonContent, "utf8", function (err) {
+        if (err) {
+          console.log("An error occured while writing JSON Object to File.");
+          return console.log(err);
+        }
+
+        console.log("JSON file has been saved.");
+      });
     })
     .catch(function (err) {
       // Log any errors
