@@ -1,0 +1,27 @@
+{
+  "name": "ecoWatt-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "type": "module",
+  "scripts": {
+    "dev-runner": "node -r esbuild-runner/register .",
+    "dev": "ts-node-esm main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Cyril Hue",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.0",
+    "esbuild": "^0.15.10",
+    "esbuild-runner": "^2.2.1",
+    "node-fetch": "^3.2.10",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
