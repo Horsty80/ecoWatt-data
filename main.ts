@@ -8,7 +8,6 @@ console.log("process.env.CLIENT_ID: ", process.env.CLIENT_ID);
 export function authorizeRteAndGetSignal() {
   // Call the API
   const token = Buffer.from(`${process.env.CLIENT_ID}:${process.env.ID_SECRET}`).toString("base64");
-  console.log("token ", token);
   // This is a POST request, because we need the API to generate a new token for us
   fetch("https://digital.iservices.rte-france.com/token/oauth/", {
     method: "POST",
@@ -24,7 +23,6 @@ export function authorizeRteAndGetSignal() {
     })
     .then(function (data: any) {
       // Log the API data
-      console.log("token", data);
 
       // Return a second API call
       // This one uses the token we received for authentication
@@ -45,7 +43,6 @@ export function authorizeRteAndGetSignal() {
 
       // stringify JSON Object
       var jsonContent = JSON.stringify(data, null, 2);
-      console.log(jsonContent);
 
       fs.writeFile("signal.json", jsonContent, "utf8", function (err) {
         if (err) {
