@@ -1,0 +1,16 @@
+name: test workflow
+
+on: workflow_dispatch
+
+jobs:
+  test-create-env:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create env file
+        run: |
+          touch .env
+          echo MY_ENV_VARIABLE=${CLIENT_ID} > .env
+          cat .env
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
