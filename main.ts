@@ -35,6 +35,9 @@ export function authorizeRteAndGetSignal() {
     })
     .then(function (resp) {
       // Return the API response as JSON
+      if (resp.status === 429) {
+        throw new Error(`${resp.statusText}`);
+      }
       return resp.json();
     })
     .then(function (data) {
